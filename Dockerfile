@@ -5,7 +5,7 @@ ENV BEACONPORT 15000
 ENV GAMEPORT 7777
 
 WORKDIR /game
-RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
+RUN /home/steam/steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
 
 VOLUME /game/FactoryGame/Saved/Config/LinuxServer
 
