@@ -3,7 +3,6 @@
 FROM steamcmd/steamcmd:latest
 
 ENV UID 2000
-ENV GID 2000
 
 ENV QUERYPORT 15777
 ENV BEACONPORT 15000
@@ -14,9 +13,9 @@ WORKDIR /game
 RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
 
 # Add run user
-RUN adduser --disabled-password --gecos '' --uid $UID --gid $GID satisfactory
+RUN adduser --disabled-password --gecos '' --uid $UID satisfactory
 USER satisfactory
-RUN chown -R satisfactory:satisfactory /game
+RUN chown -R satisfactory /game
 
 RUN ls -lah /game
 
