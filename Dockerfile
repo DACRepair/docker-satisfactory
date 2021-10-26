@@ -1,11 +1,11 @@
+# https://satisfactory.fandom.com/wiki/Dedicated_servers
+
 FROM debian:latest
 SHELL ["/bin/bash", "-c"]
 
 ENV QUERYPORT 15777
 ENV BEACONPORT 15000
 ENV GAMEPORT 7777
-
-RUN printenv
 
 # Install SteamCMD
 WORKDIR /steamcmd
@@ -15,9 +15,10 @@ RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.t
 RUN ln -s /steamcmd/linux32/steamcmd /usr/bin/steamcmd && chmod a+x /usr/bin/steamcmd
 RUN steamcmd +quit | true
 
-
+# Install Satisfactory
 WORKDIR /game
 RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit | true
+RUN ls -lah /game
 
 VOLUME /game/FactoryGame/Saved/Config/LinuxServer
 
@@ -26,3 +27,4 @@ EXPOSE $BEACONPORT/tcp $BEACONPORT/udp
 EXPOSE $GAMEPORT/tcp $GAMEPORT/udp
 
 ENTRYPOINT ./FactoryServer.sh
+CMD ""
