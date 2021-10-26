@@ -1,12 +1,17 @@
-FROM debian:latest
+FROM arch:latest
 
 ENV QUERYPORT 15777
 ENV BEACONPORT 15000
 ENV GAMEPORT 7777
 
-RUN dpkg --add-architecture i386 \
-    && apt-get update \
-    && apt-get -y install lib32gcc1-s1 steamcmd
+RUN pkg --no-cache add git makepkg
+
+
+
+
+
+
+
 
 WORKDIR /game
 VOLUME /game/FactoryGame/Saved/Config/LinuxServer
