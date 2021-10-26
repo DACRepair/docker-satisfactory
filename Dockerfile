@@ -4,6 +4,9 @@ ENV QUERYPORT 15777
 ENV BEACONPORT 15000
 ENV GAMEPORT 7777
 
+RUN apt-get update \
+    && apt-get -y install software-properties-common
+
 RUN add-apt-repository multiverse \
     && dpkg --add-architecture i386 \
     && apt-get update \
