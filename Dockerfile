@@ -12,8 +12,8 @@ WORKDIR /steamcmd
 RUN apt-get -qq update && apt-get -qq -y install curl lib32gcc-s1 \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
-RUN ln -s /steamcmd/steamcmd.sh /usr/bin/steamcmd && chmod a+x /usr/bin/steamcmd
-RUN steamcmd +quit
+RUN ln -s /steamcmd/linux32/steamcmd /usr/bin/steamcmd && chmod a+x /usr/bin/steamcmd
+RUN steamcmd +quit | true
 
 
 #WORKDIR /game
