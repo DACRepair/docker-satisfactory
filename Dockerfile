@@ -14,8 +14,8 @@ RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
 
 # Add run user
 RUN adduser --disabled-password --gecos '' --uid $UID satisfactory
-USER satisfactory
 RUN chown -R satisfactory /game
+USER satisfactory
 
 RUN ls -lah /game
 
