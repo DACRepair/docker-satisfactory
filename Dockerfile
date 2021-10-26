@@ -1,4 +1,5 @@
 FROM debian:latest
+SHELL ["/bin/bash", "-c"]
 
 ENV QUERYPORT 15777
 ENV BEACONPORT 15000
@@ -11,7 +12,7 @@ RUN apt-get -qq update && apt-get -qq -y install curl lib32gcc-s1 \
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 
 RUN ls -lah /app
-RUN ln -s /app/steamcmd.sh /bin/steamcmd
+RUN ln -s /app/linux32/steamcmd /bin/steamcmd
 RUN steamcmd +quit
 
 
