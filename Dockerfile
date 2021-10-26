@@ -7,6 +7,9 @@ ENV BEACONPORT 15000
 ENV GAMEPORT 7777
 
 # Install Satisfactory
+RUN useradd -ms /bin/bash satisfactory
+USER satisfactory
+
 WORKDIR /game
 RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
 RUN ls -lah /game
