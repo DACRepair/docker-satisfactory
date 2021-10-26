@@ -1,19 +1,12 @@
-FROM arch:latest
+FROM cm2network/steamcmd
 
 ENV QUERYPORT 15777
 ENV BEACONPORT 15000
 ENV GAMEPORT 7777
 
-RUN pkg --no-cache add git makepkg
-
-
-
-
-
-
-
-
 WORKDIR /game
+RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
+
 VOLUME /game/FactoryGame/Saved/Config/LinuxServer
 
 EXPOSE $QUERYPORT/tcp $QUERYPORT/udp
