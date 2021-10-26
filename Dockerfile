@@ -6,8 +6,8 @@ ENV GAMEPORT 7777
 
 RUN add-apt-repository multiverse \
     && dpkg --add-architecture i386 \
-    && apt update \
-    && apt install lib32gcc1 steamcmd
+    && apt-get update \
+    && apt-get -y install lib32gcc1 steamcmd
 
 WORKDIR /game
 VOLUME /game/FactoryGame/Saved/Config/LinuxServer
