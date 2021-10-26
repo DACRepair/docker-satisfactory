@@ -2,6 +2,9 @@
 
 FROM steamcmd/steamcmd:latest
 
+ARG UID 2000
+ARG GID 2000
+
 ENV QUERYPORT 15777
 ENV BEACONPORT 15000
 ENV GAMEPORT 7777
@@ -12,7 +15,8 @@ RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
 RUN ls -lah /game
 
 # Add run user
-RUN useradd -ms /bin/bash satisfactory
+RUN addgroup --gid $GID satisfactory
+RUN adduser --disabled-password --gecos '' --uid $UID --gid $GID satisfactory
 USER satisfactory
 RUN chown -R satisfactory:satisfactory /game
 
