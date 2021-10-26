@@ -11,7 +11,7 @@ RUN apt-get -qq update && apt-get -qq -y install curl lib32gcc-s1 \
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 
 RUN ln -s /app/steamcmd.sh /bin/steamcmd
-RUN ./steamcmd.sh +quit
+RUN steamcmd +quit
 
 
 #WORKDIR /game
