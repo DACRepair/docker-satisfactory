@@ -13,11 +13,11 @@ RUN apt-get -qq update && apt-get -qq -y install curl lib32gcc-s1 \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 RUN ln -s /steamcmd/linux32/steamcmd /usr/bin/steamcmd && chmod a+x /usr/bin/steamcmd
-RUN steamcmd +quit | if [ $? -eq 42 ]; then true; else false; fi
+RUN steamcmd +quit | true
 
 
 WORKDIR /game
-RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
+RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit | true
 
 VOLUME /game/FactoryGame/Saved/Config/LinuxServer
 
