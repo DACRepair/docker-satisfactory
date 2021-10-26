@@ -16,8 +16,8 @@ RUN ln -s /steamcmd/linux32/steamcmd /usr/bin/steamcmd && chmod a+x /usr/bin/ste
 RUN steamcmd +quit | true
 
 
-#WORKDIR /game
-#RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
+WORKDIR /game
+RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
 
 VOLUME /game/FactoryGame/Saved/Config/LinuxServer
 
