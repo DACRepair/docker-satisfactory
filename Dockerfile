@@ -12,13 +12,14 @@ ENV GAMEPORT 7777
 # Install Satisfactory
 WORKDIR /game
 RUN steamcmd +login anonymous +force_install_dir /game +app_update 1690800 +quit
-RUN ls -lah /game
 
 # Add run user
-RUN addgroup --gid $GID satisfactory
+RUN adduser --group --gid $GID satisfactory
 RUN adduser --disabled-password --gecos '' --uid $UID --gid $GID satisfactory
 USER satisfactory
 RUN chown -R satisfactory:satisfactory /game
+
+RUN ls -lah /game
 
 VOLUME /game/FactoryGame/Saved/Config/LinuxServer
 
